@@ -10,15 +10,14 @@
   },
   "dependencies": {
     "@cloudamqp/amqp-client": "^3.1.1",
-    "expo": "~50.0.14",
+    "expo": "^51.0.8",
     "expo-status-bar": "~1.11.1",
     "node-libs-react-native": "^1.2.1",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-tcp": "^4.0.0",
     "stream": "^0.0.2",
-    "stream-browserify": "^3.0.0",
-    "text-encoding": "^0.7.0"
+    "stream-browserify": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
