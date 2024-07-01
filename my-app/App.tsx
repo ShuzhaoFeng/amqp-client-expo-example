@@ -4,7 +4,7 @@ import TextEncodingPolyfill from "text-encoding";
 import { StatusBar } from "expo-status-bar";
 import { AMQPChannel, AMQPWebSocketClient } from "@cloudamqp/amqp-client";
 
-import appconfig from "./appconfig.json";
+import credentials from "./credentials.json";
 
 export default function App() {
   const [ready, setReady] = useState<boolean>(false);
@@ -15,15 +15,20 @@ export default function App() {
     TextDecoder: TextEncodingPolyfill.TextDecoder,
   });
 
-  const { cloud_amqp_url, cloud_amqp_user, cloud_amqp_password } = appconfig;
+  const {
+    amqp_client_url,
+    amqp_client_vhost,
+    amqp_client_user,
+    amqp_client_password,
+  } = credentials;
 
   useEffect(() => {
     setReady(false);
     const client = new AMQPWebSocketClient(
-      cloud_amqp_url,
-      cloud_amqp_user,
-      cloud_amqp_user,
-      cloud_amqp_password
+      amqp_client_url,
+      amqp_client_vhost,
+      amqp_client_user,
+      amqp_client_password
     );
 
     client

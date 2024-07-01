@@ -1,5 +1,0 @@
-{
-    "cloud_amqp_url": "wss://something.somemq.cloudamqp.com/ws/amqp",
-    "cloud_amqp_user": "user",
-    "cloud_amqp_password": "password"
-}
