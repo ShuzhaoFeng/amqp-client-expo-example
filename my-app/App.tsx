@@ -1,13 +1,19 @@
-import { AMQPChannel, AMQPWebSocketClient } from "@cloudamqp/amqp-client";
-import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { Alert, Button, StyleSheet, Text, View } from "react-native";
+import TextEncodingPolyfill from "text-encoding";
+import { StatusBar } from "expo-status-bar";
+import { AMQPChannel, AMQPWebSocketClient } from "@cloudamqp/amqp-client";
 
 import appconfig from "./appconfig.json";
 
 export default function App() {
   const [ready, setReady] = useState<boolean>(false);
   const [channel, setChannel] = useState<AMQPChannel | null>(null);
+
+  Object.assign(global, {
+    TextEncoder: TextEncodingPolyfill.TextEncoder,
+    TextDecoder: TextEncodingPolyfill.TextDecoder,
+  });
 
   const { cloud_amqp_url, cloud_amqp_user, cloud_amqp_password } = appconfig;
 
@@ -16,8 +22,8 @@ export default function App() {
     const client = new AMQPWebSocketClient(
       cloud_amqp_url,
       cloud_amqp_user,
-      cloud_amqp_password,
-      cloud_amqp_user
+      cloud_amqp_user,
+      cloud_amqp_password
     );
 
     client
